@@ -5,4 +5,4 @@ curl http://www.nyc.gov/html/doh/downloads/zip/bigapps/dohmh_restaurant-inspecti
 cd data/
 unzip dohmh_restaurant-inspections_002.zip
 cd ..
-cat data/WebExtract.txt | python2.6 roach_parser.py 30 0 > data/roach_incidents_30_0.tsv
+cat data/WebExtract.txt | python2.6 roach_parser.py 30 0 > data/binomial_roaches.tsv
