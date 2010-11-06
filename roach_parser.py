@@ -23,18 +23,33 @@ window_end = int(sys.argv[2])
 
 input = csv.reader(sys.stdin)
 
+total_inspections = {}
+roach_findings = {}
+
 for row in input:
     try:
         incident_dba = row[1]
         incident_zipcode = row[5]
         incident_timestamp = row[8]
         incident_violation_code = row[10]
-        if incident_violation_code != '04M':
-            continue
-        else:
-            incident_datetime = datetime.strptime(incident_timestamp, '%Y-%m-%d %H:%M:%S')
-            temporal_distance = date.today()- incident_datetime.date()
-            if temporal_distance <= timedelta(window_size + window_end) and temporal_distance >= timedelta(window_end):
-                print "\t".join([incident_zipcode, incident_dba])
+        incident_datetime = datetime.strptime(incident_timestamp, '%Y-%m-%d %H:%M:%S')
+        temporal_distance = date.today()- incident_datetime.date()
+        if temporal_distance <= timedelta(window_size + window_end) and temporal_distance >= timedelta(window_end):
+            if total_inspections.has_key(incident_zipcode):
+                total_inspections[incident_zipcode] = total_inspections[incident_zipcode] + 1
+            else:
+                total_inspections[incident_zipcode] = 1
+            if incident_violation_code == '04M':
+                if roach_findings.has_key(incident_zipcode):
+                    roach_findings[incident_zipcode] = roach_findings[incident_zipcode] + 1
+                else:
+                    roach_findings[incident_zipcode] = 1
     except:
-        1 # We're ignoring errors for time being.
+        1 # We're just ignoring errors for time being.
+
+for zipcode in total_inspections.keys():
+    if not re.search(r'\d{5}', zipcode):
+        continue
+    if not roach_findings.has_key(zipcode):
+        roach_findings[zipcode] = 0
+    print "\t".join([zipcode, str(total_inspections[zipcode]), str(roach_findings[zipcode])])
