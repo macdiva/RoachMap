@@ -1,3 +1,4 @@
+'''Usage: draw_map.py [input.tsv] -> roachmap-[date].png'''
 from __future__ import division
 import numpy as np
 import matplotlib as ma
@@ -11,7 +12,7 @@ def colorfunc(v,x):
   v = np.sort(v)
   spot = np.flatnonzero(x<v)[0]
   spot /= float(len(v))
-  spot = np.interp(spot,[0,1],[.7,.1])
+  spot = np.interp(spot,[0,1],[.99,.3])
   return (spot,0,0)
 
 map_projected = cp.load(open('zip_projected.pkl'))
@@ -48,12 +49,12 @@ for z,l in map_projected.items():
     plt.plot(p[:,0],p[:,1],c=edgecolor,alpha=.5,lw=.01)
 
 for i in xrange(5):
-  xy = [np.interp(i,[0,5],[.1,.3]),.75]
-  c = (np.interp(i,[0,5],[.7,0]),0,0)
-  ax.add_patch(ma.patches.Rectangle(xy,.1,.05,color=c,transform=ax.transAxes))
+  xy = [np.interp(i,[0,5],[.15,.4]),.7]
+  c = (np.interp(i,[0,5],[.99,.3]),0,0)
+  ax.add_patch(ma.patches.Rectangle(xy,.05,.05,color=c,transform=ax.transAxes))
 
-ax.text(.1,.74,"Low",transform=ax.transAxes,va='top')
-ax.text(.3,.74,"High",transform=ax.transAxes,va='top')
+ax.text(.15,.69,"Low %",transform=ax.transAxes,va='top')
+ax.text(.35,.69,"High",transform=ax.transAxes,va='top')
 plt.title("Where are the roaches in the past four weeks?")
 
 today = datetime.date.today()
@@ -69,4 +70,4 @@ ax.set_frame_on(False)
 ax.set_axis_off()
 
 
-plt.savefig('roachmap.png')
+plt.savefig('roachmap_%s-%s-%s.png'%(year,month,day))
