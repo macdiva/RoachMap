@@ -30,11 +30,9 @@ m = np.mean(z_bin_means)
 v = np.var(z_bin_means)
 alpha = m*((m/v)*(1-m) - 1)
 beta = (1-m)*((m/v)*(1-m) - 1)
-print alpha,beta
 
 for z,v in zip_values.iteritems():
   zip_values[z] = (alpha+v[0])/(alpha+beta+v[1])
-print zip_values.values()
 plt.figure()
 ax = plt.gca()
 
