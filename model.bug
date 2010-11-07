@@ -1,0 +1,14 @@
+model {
+	for (i in 1:N)
+	{
+		roach[i] ~ dbern(theta[zipcode[i]])
+	}
+	
+	for (j in 1:K)
+	{
+		theta[j] ~ dbeta(alpha, beta)
+	}
+	
+	alpha ~ dgamma(0.02, 0.01)
+	beta ~ dgamma(0.02, 0.01)
+}
