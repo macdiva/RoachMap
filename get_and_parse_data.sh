@@ -2,8 +2,7 @@
 
 cd /home/roachmap/backend
 rm data/*
-curl http://www.nyc.gov/html/doh/downloads/zip/bigapps/dohmh_restaurant-inspections_002.zip \
-  > data/dohmh_restaurant-inspections_002.zip
+curl http://www.nyc.gov/html/doh/downloads/zip/bigapps/dohmh_restaurant-inspections_002.zip > data/dohmh_restaurant-inspections_002.zip
 cd data/
 unzip dohmh_restaurant-inspections_002.zip
 cd ..

@@ -1,0 +1,1 @@
+0 0 * * * /usr/bin/python2.6 /home/roachmap/backend/get_and_parse_data.py
