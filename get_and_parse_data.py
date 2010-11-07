@@ -20,3 +20,6 @@ os.chdir('..')
 
 os.system('cat data/WebExtract.txt | python2.6 roach_parser.py 90 0 > data/binomial_roaches.tsv')
 
+os.system('rm roachmap.png')
+
+os.system('python draw_map.py data/binomial_roaches.tsv')

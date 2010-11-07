@@ -70,4 +70,5 @@ ax.set_frame_on(False)
 ax.set_axis_off()
 
 
-plt.savefig('roachmap_%s-%s-%s.png'%(year,month,day))
+plt.savefig('archive/roachmap_%s-%s-%s.png'%(year,month,day))
+plt.savefig('roachmap.png')
