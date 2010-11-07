@@ -12,8 +12,11 @@ def colorfunc(v,x):
   v = np.sort(v)
   spot = np.flatnonzero(x<v)[0]
   spot /= float(len(v))
-  spot = np.interp(spot,[0,1],[.99,.3])
-  return (spot,0,0)
+  spot_r = np.interp(spot,[0,1],[.95,.7])
+  spot_gb = np.interp(spot,[0,1],[.8,0])
+  colormap = [[1,1,1],
+              [.8,0,0]]
+  return (spot_r,spot_gb,spot_gb)
 
 map_projected = cp.load(open('zip_projected.pkl'))
 zip_values_file = open(sys.argv[1])
@@ -46,11 +49,13 @@ for z,l in map_projected.items():
     edgecolor = (.95,.95,.95)
   for p in l:
     ax.add_patch(ma.patches.Polygon(p,fc=facecolor, ec=edgecolor))
-    plt.plot(p[:,0],p[:,1],c=edgecolor,alpha=.5,lw=.01)
+    plt.plot(p[:,0],p[:,1],c=edgecolor,alpha=.5,lw=.001)
 
 for i in xrange(5):
   xy = [np.interp(i,[0,5],[.15,.4]),.7]
-  c = (np.interp(i,[0,5],[.99,.3]),0,0)
+  c_r = np.interp(i,[0,4],[.95,.7])
+  c_gb = np.interp(i,[0,4],[.8,0])
+  c = (c_r,c_gb,c_gb)
   ax.add_patch(ma.patches.Rectangle(xy,.05,.05,color=c,transform=ax.transAxes))
 
 ax.text(.15,.69,"Low %",transform=ax.transAxes,va='top')
