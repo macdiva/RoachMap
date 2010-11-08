@@ -1,105 +1,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style type="text/css">
+<link rel="stylesheet" type="text/css" href="reset.css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
 
-* {
-margin:0; padding:0;
-}
-
-body {
-	margin-top: 20px;
-	text-align:center;
-	background-color: #331A00;
-}
-
-#container {
-  width: 960px;
-  margin: 0 auto;
-  font-family: "adelle-1","adelle-2",serif;
-  text-align: left;
-  background-color: #fff;
-  -moz-border-radius: 15px;
-border-radius: 15px;
-  padding: 40px 40px 20px 40px;
-
-}
-  
-h1 {
-	font-family: "jesaya-1","jesaya-2",sans-serif;
-	padding-left: 60px;
-    text-shadow: 2px 2px 1px #ccc, 2px 2px 1px #fff;
-}
-
-
-#footer {
-    font-size: 11px;
-}
-
-.img {
-	float: left;
-	padding-right: 8px;
-	border: none;
-}
-
-p {
-  margin-bottom: 1em;
-  font-size: 0.85em;
-}
-
-.button {
-background:#FFFFFF;
-background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#EEE));
-background:-moz-linear-gradient(0% 90% 90deg, #EEE, #FFF);
-  -moz-border-radius: 15px;
-border-radius: 15px;
-margin-left: 770px;
-padding: 10px 50px;
-font-size: 1.15em;
-}
-
-.email {
- padding: 5px 2px 5px 35px;
-/*  margin-bottom:15px; */
- background: url(email-icon.png) 10px center  no-repeat;
-}
-
-.clear {
-clear: both;
-}
-
-#footer {
- color: #777;
-}
-
-#footer a {
- color: #555;
- text-decoration: none;
-}
-
-#archives {
- color: #999;
- font-family: "adelle-1","adelle-2",serif;
- padding: 20px 0 50px;
-}
-
-#archives ul li {
- display: inline-block;
- margin-top: 5px;
- margin-right: 5px;
- padding: 5px 10px;
- 
- background:#AD5A00;
- background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#AD5A00), to(#703A00));
- background:-moz-linear-gradient(0% 90% 90deg, #703A00, #AD5A00);
-   -moz-border-radius: 5px;
-border-radius: 5px;
-}
-
-#archives li a {
-color: #bbb;
-text-decoration: none;
-}
 </style>
 <title>Roach Map - Where are the roaches in NYC? - The Great Urban Hack</title>
 <meta name="description" content="A map of New York City cockroach reports in restaurants recorded by the Health Department." />
@@ -123,7 +27,7 @@ text-decoration: none;
 <body>
 <div id="container">
 <h1>The New York City Roach Map</h1>
-<img src="/images/roachmap_2010-11-6.png" style="float:left; padding-bottom:0px;" width="80%" height="80%" alt="Where are the roaches? NOVEMBER 2010"><p>Cockroaches are gross. They spread germs. They defecate on our silverware. They live in our kitchens, our bathrooms. They thrive on our garbage, our leftover food.  And in a city of 8 million, they can be anywhere. But where are they exactly?</p>
+<a href="/images/roachmap_2010-11-6.png"><img src="/images/roachmap_2010-11-6.png" class="map" alt="Where are the roaches? November 2010 map"></a><p>Cockroaches are gross. They spread germs. They defecate on our silverware. They live in our kitchens, our bathrooms. They thrive on our garbage, our leftover food.  And in a city of 8 million, they can be anywhere. But where are they exactly?</p>
 
 <p>Right now there's no up-to-date way to track roach infestations. But restaurant inspectors are on the look out for the 6-legged bugs all the time. This map shows where city health inspectors are reporting roach sightings on any given week.</p>
 
@@ -131,13 +35,13 @@ text-decoration: none;
 
 <p>Sign up below to be emailed a monthly snapshot of where the roaches are.</p>
 <form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=roachmap/XgDN', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p><input type="text" style="width:145px" name="email" class="email"/><input type="hidden" value="roachmap/XgDN" name="uri"/><input type="hidden" name="loc" value="en_US"/><input type="submit" value="Subscribe" class="button" /></p></form>
-<div "clear"></div>
+<div class="clear"></div>
 <div id="footer">
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0; padding-right:10px; float:left;" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a><p><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type"><a xmlns:cc="http://creativecommons.org/ns#" href="http://roachmap.com" property="cc:attributionName" rel="cc:attributionURL">Roach Map</a></span> by Niles Brooks, Jim Colgan, Max Shron, John Myles White and Chrys Wu is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a> | <a href="about.html">About</a></p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0; padding-right:10px; float:left;" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a><p><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type"><a xmlns:cc="http://creativecommons.org/ns#" href="http://roachmap.com" property="cc:attributionName" rel="cc:attributionURL">Roach Map</a></span> by Niles Brooks, Jim Colgan, Max Shron, John Myles White and Chrys Wu is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a> | <a href="about.html"><b>About</b></a></p>
 </div>
 
 </div>
-<div "clear"></div>
+<div class="clear"></div>
 
 <div id="archives">Archives:
 

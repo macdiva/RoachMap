@@ -1,116 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style type="text/css">
-
-* {
-margin:0; padding:0;
-}
-
-body {
-	margin-top: 20px;
-	text-align:center;
-	background-color: #331A00;
-}
-
-#container {
-  width: 960px;
-  margin: 0 auto;
-  font-family: "adelle-1","adelle-2",serif;
-  text-align: left;
-  background-color: #fff;
-  -moz-border-radius: 15px;
-border-radius: 15px;
-  padding: 40px 40px 20px 40px;
-
-}
-  
-h1 {
-	font-family: "jesaya-1","jesaya-2",sans-serif;
-	padding: 0 0 20px 60px;
-    text-shadow: 2px 2px 1px #ccc, 2px 2px 1px #fff;
-}
-
-
-#footer {
-    font-size: 11px;
-}
-
-.img {
-	float: left;
-	padding-right: 8px;
-	border: none;
-}
-
-p {
-  margin-bottom: 1em;
-  padding-left: 60px;
-  font-size: 0.85em;
-  line-height: 1.25;
-}
-
-.byline {
-    padding-top: -20px;
-    float: right;
-    font-size: 12px;
-    font-style: italic;
-}
-
-.button {
-background:#FFFFFF;
-background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#EEE));
-background:-moz-linear-gradient(0% 90% 90deg, #EEE, #FFF);
-  -moz-border-radius: 15px;
-border-radius: 15px;
-margin-left: 770px;
-padding: 10px 50px;
-font-size: 1.15em;
-}
-
-.email {
- padding: 5px 2px 5px 35px;
-/*  margin-bottom:15px; */
- background: url(email-icon.png) 10px center  no-repeat;
-}
-
-.clear {
-clear: both;
-}
-
-#footer {
- color: #777;
-}
-
-#footer a {
- color: #555;
- text-decoration: none;
-}
-
-#archives {
- color: #999;
- font-family: "adelle-1","adelle-2",serif;
- padding: 20px 0 50px;
-}
-
-#archives ul li {
- display: inline-block;
- margin-top: 5px;
- margin-right: 5px;
- padding: 5px 10px;
- 
- background:#AD5A00;
- background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#AD5A00), to(#703A00));
- background:-moz-linear-gradient(0% 90% 90deg, #703A00, #AD5A00);
-   -moz-border-radius: 5px;
-border-radius: 5px;
-}
-
-#archives li a {
-color: #bbb;
-text-decoration: none;
-}
-</style>
-
+<link rel="stylesheet" type="text/css" href="reset.css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
 <title>About the Roach Map - The Great Urban Hack</title>
 <script type="text/javascript" src="http://use.typekit.com/vbg6ymp.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -131,26 +23,29 @@ text-decoration: none;
 
 <body>
 <div id="container">
-<h1>About the Roach Map</h1>
-<p>We used the <a href="http://nyc.gov/html/datamine/html/data/raw.shtml">NYC Data Mine</a> &#8220;<a href="http://www.nyc.gov/html/doh/html/rii/index.shtml">Restaurant Inspection Reports</a>&#8221; data set, which describes almost 400,000 results from health inspections performed in restaurants across all of NYC. We pulled this data set</p>
+<h1>About the New York City Roach Map</h1>
+<a href="http://www.flickr.com/photos/k790i/3639234792/"><img src="/images/roach.png" align="right" padding-top="55px" padding-left="5px"></a><p padding="40px">We used the <a href="http://www.nyc.gov/html/datamine/html/home/home.shtml">NYC Data Mine</a> &#8220;Restaurant inspection results&#8221; raw data set, which describes almost 400,000 results from health inspections performed in restaurants across all of NYC. We pulled this data set. You can find the most recent copy by searching "restaurant inspection results" in the Data Mine <a href="http://www.nyc.gov/html/datamine/html/data/raw.shtml">raw data catalog</a>.</p>
 
-<p>Then we went through Violation.txt to find the violation code, 04M, that corresponds to finding &#8220;live roaches present in facility's food and/or non-food areas.&#8221; This code&#8217;s current meaning went into effect July 26, 2010, so we choose to only analyze a 90-day window of data from the WebExtract.txt file.</p>
+<p>We then went through Violation.txt file within the data set to find the violation code, 04M, that corresponds to finding &#8220;live roaches present in facility's food and/or non-food areas.&#8221; This code&#8217;s current meaning went into effect July 26, 2010, so we choose to only analyze a 90-day window of data from the WebExtract.txt file.</p>
 
 <p>We wrote a Python script that parses the data set&#8217;s WebExtract.txt file line-by-line, counting every single result for each ZIP code in New York in our window and every result specifically related to roaches. This script is called <a href="https://github.com/macdiva/RoachMap/blob/master/roach_parser.py">roach_parser.py</a>.</p>
 
 <p>This count data tells us what percentage of inspections resulted in a violation for roaches. For that reason, we chose to analyze the data as draws from a binomial model. To estimate the parameters of this model, we used a hierarchical Bayesian model implemented both as an empirical Bayes approach in NumPy (<a href="https://github.com/macdiva/RoachMap/blob/master/draw_map.py">draw_map.py</a>) and using Gibbs sampling (<a href="https://github.com/macdiva/RoachMap/blob/master/jags_analysis.R">jags_analysis.R</a>) to correct for the large discrepancies in inspections across ZIP codes. Some ZIP codes only have a few inspections, while other ZIP codes have a very large number of inspections: the Bayesian approach allows us to pool information across all ZIP codes to make up for this discrepancy.</p>
 
 <p>With that information, we plot the data on a map using a NYC shapefile using Matplotlib. This is done in draw_map.py.</br>
-<div class="byline">&mdash; John Myles White, on behalf of the Roach Map team</div></p>
-<br style="clear:both"/>
-<p>You'll find our Roach Map files <a href="https://github.com/macdiva/RoachMap">on Github</a>.</p>
+<div class="byline">&mdash; John Myles White, on behalf of the Roach Map team, a.k.a. "Drawing Conclusions"</div></p>
+<div class="clear"></div>
+<p>You&#8217;ll find our Roach Map files <a href="https://github.com/macdiva/RoachMap">on Github</a>.</p>
+<p>If you're concerned about cockroaches, the city has information about <a href="http://www.nyc.gov/html/doh/html/ehs/ehscroach.shtml">what to do</a>.</p>
+<p>Ready for more? Go back to the <a href="index.html">Roach Map</a>.</p>
 <br style="clear:both"/>
 <div id="footer">
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0; padding: 0 10px 0 40px; float:left;" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a><p><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type"><a xmlns:cc="http://creativecommons.org/ns#" href="http://roachmap.com" property="cc:attributionName" rel="cc:attributionURL">Roach Map</a></span> by Niles Brooks, Jim Colgan, Max Shron, John Myles White and Chrys Wu is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0; padding: 0 10px 0 40px; float:left;" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a><p><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type"><a xmlns:cc="http://creativecommons.org/ns#" href="http://roachmap.com" property="cc:attributionName" rel="cc:attributionURL">Roach Map</a></span> by Niles Brooks, Jim Colgan, Max Shron, John Myles White and Chrys Wu is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.<br/>
+Photo by <a href="http://www.flickr.com/photos/k790i/3639234792/">Anil Jedhav/Flickr</a>, Creative Commons Attribution 2.0 Generic License</p>
 </div>
 
 </div>
-<br style="clear:both"/>
+<div class="clear"></div>
 
 <div id="archives">Archives:
 
