@@ -24,7 +24,11 @@
 <body>
 <div id="container">
 <h1>About the New York City Roach Map</h1>
-<a href="http://www.flickr.com/photos/k790i/3639234792/"><img src="/images/roach.png" align="right" padding-top="55px" padding-left="5px"></a><p padding="40px">We used the <a href="http://www.nyc.gov/html/datamine/html/home/home.shtml">NYC Data Mine</a> &#8220;Restaurant inspection results&#8221; raw data set, which describes almost 400,000 results from health inspections performed in restaurants across all of NYC. We pulled this data set. You can find the most recent copy by searching "restaurant inspection results" in the Data Mine <a href="http://www.nyc.gov/html/datamine/html/data/raw.shtml">raw data catalog</a>.</p>
+<a href="http://www.flickr.com/photos/k790i/3639234792/"><img src="/images/roach.png" class="right" padding-top="55px" padding-left="5px"></a><p padding="40px">On Nov. 6 and 7, 2010, a group of journalists, data scientists and developers got together for <a href="http://meetupnyc.hackshackers.com/calendar/14969218/">The Great Urban Hack NYC</a>, a two-day, overnight, city-oriented hackathon hosted by <a href="http://meetupnyc.hackshackers.com/">Hacks/Hackers NYC</a> and <a href="http://eyebeam.org">Eyebeam Art + Technology Center</a>.</p>
+
+<p>After brainstorming and chucking several ideas, five of us settled on creating a map of roach reports culled from city restaurant health inspection data. Since this site and the map were produced during a hackathon, think of it as a work in progress, one that's <a href="https://github.com/macdiva/RoachMap">free to fork</a>.</p>
+
+<p>We used the <a href="http://www.nyc.gov/html/datamine/html/home/home.shtml">NYC Data Mine</a> &#8220;restaurant inspection results&#8221; raw data set, which describes almost 400,000 results from health inspections performed in restaurants across all of NYC. The most recent report can be downloaded by searching "restaurant inspection results" in the Data Mine <a href="http://www.nyc.gov/html/datamine/html/data/raw.shtml">raw data catalog</a>.</p>
 
 <p>We then went through Violation.txt file within the data set to find the violation code, 04M, that corresponds to finding &#8220;live roaches present in facility's food and/or non-food areas.&#8221; This code&#8217;s current meaning went into effect July 26, 2010, so we choose to only analyze a 90-day window of data from the WebExtract.txt file.</p>
 
@@ -33,10 +37,20 @@
 <p>This count data tells us what percentage of inspections resulted in a violation for roaches. For that reason, we chose to analyze the data as draws from a binomial model. To estimate the parameters of this model, we used a hierarchical Bayesian model implemented both as an empirical Bayes approach in NumPy (<a href="https://github.com/macdiva/RoachMap/blob/master/draw_map.py">draw_map.py</a>) and using Gibbs sampling (<a href="https://github.com/macdiva/RoachMap/blob/master/jags_analysis.R">jags_analysis.R</a>) to correct for the large discrepancies in inspections across ZIP codes. Some ZIP codes only have a few inspections, while other ZIP codes have a very large number of inspections: the Bayesian approach allows us to pool information across all ZIP codes to make up for this discrepancy.</p>
 
 <p>With that information, we plot the data on a map using a NYC shapefile using Matplotlib. This is done in draw_map.py.</br>
-<div class="byline">&mdash; John Myles White, on behalf of the Roach Map team, a.k.a. "Drawing Conclusions"</div></p>
+<div class="byline">&mdash; John Myles White and Chrys Wu, on behalf of the Roach Map team, a.k.a. "Drawing Conclusions"</div></p>
 <div class="clear"></div>
-<p>You&#8217;ll find our Roach Map files <a href="https://github.com/macdiva/RoachMap">on Github</a>.</p>
+<p><b>Drawing Conclusions</b> is...<br/>
+<ul>
+<li><b>Niles Brooks</b></li>
+<li><b>Jim Colgan</b></li>
+<li><b>Max Shron</b></li>
+<li><a href="http://johnmyleswhite.com"><b>John Myles White</b></a>, a Ph.D student in psychology at Princeton, where he studies behavioral economics and machine learning.</li>
+<li><a href="http://twitter.com/MacDivaONA"><b>Chrys Wu</b></a>, journalist, strategist, maker, cook, and co-organizer of Hacks/Hackers NYC.</li>
+</ul>
+</p>
+<p>The Roach Map is a work in progress. Our files are <a href="https://github.com/macdiva/RoachMap">on Github</a>.</p>
 <p>If you're concerned about cockroaches, the city has information about <a href="http://www.nyc.gov/html/doh/html/ehs/ehscroach.shtml">what to do</a>.</p>
+<p>The Roach Map was one of a dozen Great Urban Hack NYC projects. See the others on <a href="http://hackshackers.com/2010/11/08/open-all-night-the-great-urban-hack-nyc/">HacksHackers.com</a>.</p>
 <p>Ready for more? Go back to the <a href="index.html">Roach Map</a>.</p>
 <br style="clear:both"/>
 <div id="footer">
