@@ -11,6 +11,9 @@ import datetime
 def colorfunc(v,x):
   v = np.sort(v)
   spot = np.flatnonzero(x<v)[0]
+  #quintile
+  x = int(x*5)
+  x = x/(5.0)
   spot /= float(len(v))
   spot_r = np.interp(spot,[0,1],[.95,.7])
   spot_gb = np.interp(spot,[0,1],[.8,0])
@@ -58,8 +61,11 @@ for i in xrange(5):
   c = (c_r,c_gb,c_gb)
   ax.add_patch(ma.patches.Rectangle(xy,.05,.05,color=c,transform=ax.transAxes))
 
-ax.text(.15,.69,"Low %",transform=ax.transAxes,va='top')
-ax.text(.35,.69,"High",transform=ax.transAxes,va='top')
+ax.text(.15,.69,"Least",transform=ax.transAxes,va='top')
+ax.text(.34,.69,"Most",transform=ax.transAxes,va='top')
+ax.text(.15,.65,"quintile of fraction \nof restaurant inspections \nthat turned up \ncockroaches \n(confidence \nadjusted)",transform=ax.transAxes,va='top',fontsize=10)
+
+
 plt.title("Where are the roaches in the past four weeks?")
 
 today = datetime.date.today()
