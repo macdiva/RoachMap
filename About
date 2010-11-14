@@ -1,0 +1,10 @@
+For our project, we decided to use the NYC Data Mine's "Restaurant inspection results" data set, which describes almost 400,000 results from health inspections performed in restaurants across all of NYC. We pulled this data set
+
+Then we went through the Violation.txt to find the violation code, 04M, that corresponds to finding "live roaches present in facility's food and/or non-food areas." This code's current meaning went into effect in July 26th, 2010, so we choose to only analyze a 90 day window of data from the WebExtract.txt file.
+
+Given that data set, we wrote a Python script that parses the WebExtract.txt file line-by-line, counting every single result for each zipcode in NYC in our window and every result specifically related to roaches. This script is called roach_parser.py.
+
+This count data tells us what percentage of inspections resulted in a violation for roaches. For that reason, we chose to analyze the data as draws from a binomial model. To estimate the parameters of this model, we used a hierarchical Bayesian model implemented both as an empirical Bayes approach in NumPy (draw_map.py) and using Gibbs sampling (jags_analysis.R) to correct for the large discrepancies in inspections across zipcodes. Some zipcodes only have a few inspections, while other zipcodes have a very large number of inspections: the Bayesian approach allows us to pool information across all zipcodes to make up for this discrepancy.
+
+With that information, we plot the data on a map using a NYC shapefile using Matplotlib. This is done in draw_map.py.
+

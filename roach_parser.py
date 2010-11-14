@@ -16,6 +16,7 @@
 
 import sys
 import csv
+import re
 from datetime import *
 
 window_size = int(sys.argv[1])

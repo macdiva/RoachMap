@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Roach Map - The Great Urban Hack</title>
+	<meta name="Description" content="Where are the cockroaches in NYC? Find out here." />
+	<meta name="Keywords" content="cockroach, cockroaches, NYC, New York, New York City, data, map" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="http://www.cssstickyfooter.com/style.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="http://www.cssstickyfooter.com/finerstyle.css" media="all" rel="stylesheet" type="text/css" />
+	<!--[if !IE 7]><style type="text/css">#wrap {display:table;height:100%}</style><![endif]-->
+</head>
+
+<body>
+<div id="wrap">
+	<div id="header">
+		<div id="logo">
+			<div id="lang">
+				<a href="http://www.cssstickyfooter.com"><img src="http://www.cssstickyfooter.com/images/us.gif" alt="English" title="English" /></a>
+				<a href="http://www.cssstickyfooter.com/br/"><img src="http://www.cssstickyfooter.com/images/br.gif" alt="Portugues" title="Portugues" /></a>
+			</div>
+			<a href="http://www.cssstickyfooter.com"><img src="http://www.cssstickyfooter.com/images/css-sticky-footer.gif" alt="A CSS Sticky Footer method that actually sticks to the bottom of the page" /></a>
+			<img src="http://www.cssstickyfooter.com/images/sticks-on-bottom.jpg" alt="Your footer will stick without duct tape" />
+		</div>
+	</div>
+	<div id="main">
+		<div id="content">
+			<h1>How to Use the Sticky Footer Code</h1>
+			<p><strong>Be sure to read the <em>Known Issues</em> at the bottom of this page</strong>. It will help prevent a lot of mistakes that can take hours to debug.</p>
+			<h2>Introduction</h2>
+			<p>There are many sticky footer methods to be found in Google. I've tried many of them and they usually fail in some regards. The problem it seems is that some of these methods are old and may have worked in older browsers but they don't in newer browser releases. Because those pages are old, and were heavily linked too in the past, they still rank high in Google. Many webmasters looking for a sticky footer solution end up scratching their heads as they try these same old methods because they are the first ones they end up finding when they search.</p>
+			<p><a href="http://ryanfait.com/resources/footer-stick-to-bottom-of-page/" rel="nofollow">Ryan Fait's solution</a> is well known, and it works, but it requires an extra &lt;div&gt; with no content in it to provide an extra "push". Some HTML purists may find this a blasphemous use of non-semantic code. Our solution avoids the extra &lt;div&gt;.</p>
+			<p>The Sticky Footer solution presented here is based upon the information found in the <a href="http://www.alistapart.com/articles/footers/">Exploring Footers article from A List Apart</a> as well as expands upon the work of <a href="http://themaninblue.com/writing/perspective/2005/08/29/" rel="nofollow">Cameron Adams</a> and <a href="http://www.lwis.net/journal/2008/02/08/pure-css-sticky-footer/" rel="nofollow">this piece at lwis.net</a>.</p>
+			<p>In an early version it applied a clear fix hack to keep the footer in place in Google Chrome and other browsers where the footer would float up when you resized the window. Instead, after some feedback, this updated version simply uses <em>overflow:auto</em>, suggested by <a href="http://joelpittet.com/">Joel Pittet</a>, to do the same task. <a href="http://www.pmob.co.uk">Paul O'Brian</a> suggested the addition of <em>display:table</em> for IE 8, as well his sticky footer article <a href="http://www.search-this.com/2009/10/09/css-a-sticky-subject/">here</a> got a nice suggestion for a fix in Opera which we used here as well. It's been tested in over 50 browsers and seems to work great.</p>
+			
+			<h2>The HTML Code</h2>
+			<p>Below is the basic structure of the HTML code. You'll notice how the footer &lt;div&gt; sits <em>outside</em> of the wrap &lt;div&gt;.</p>
+
+<pre>&lt;div id="wrap"&gt;
+
+	&lt;div id="main"&gt;
+
+	&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div id="footer"&gt;
+
+&lt;/div&gt;
+</pre>
+
+			<p>You would place your content elements inside the main &lt;div&gt;. For example, if you were using a 2 column floating layout you might have this;</p>
+
+<pre>&lt;div id="wrap"&gt;
+
+	&lt;div id="main"&gt;
+
+		&lt;div id="content"&gt;
+
+		&lt;/div&gt;
+
+		&lt;div id="side"&gt;
+
+		&lt;/div&gt;
+
+	&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div id="footer"&gt;
+
+&lt;/div&gt;
+</pre>
+
+			<p>A header could be placed inside the wrap but above the main like this;</p>
+
+<pre>&lt;div id="wrap"&gt;
+
+	&lt;div id="header"&gt;
+
+	&lt;/div&gt;
+
+	&lt;div id="main"&gt;
+
+	&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div id="footer"&gt;
+
+&lt;/div&gt;
+</pre>
+
+			<p>If you wanted to place any elements outside of either the wrap or the footer then you would need to use absolute positioning else it messes up the 100% height calculations.</p>
+			<h2>The CSS Code</h2>
+			<p>Below is the CSS code that makes your sticky footers actually stick to the bottom.</p>
+
+<pre>
+html, body {height: 100%;}
+
+#wrap {min-height: 100%;}
+
+#main {overflow:auto;
+	padding-bottom: 150px;}  /* must be same height as the footer */
+
+#footer {position: relative;
+	margin-top: -150px; /* negative value of footer height */
+	height: 150px;
+	clear:both;} 
+
+/*Opera Fix*/
+body:before {
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;/
+}
+</pre>
+			<p>And on your html page you will need this conditional style for IE6 and earlier and for IE8 (!IE7 means not 7, but all others);</p>
+<pre>&lt;!--[if !IE 7]&gt;
+	&lt;style type="text/css"&gt;
+		#wrap {display:table;height:100%}
+	&lt;/style&gt;
+&lt;![endif]--&gt;
+</pre>
+
+			<p>You'll notice that the footer height is used three times. This is important and should be the same value for all three instances. The height properties are stretching the wrap &lt;div&gt; to the full height of the window. The negative margin of the footer brings it up into the padding created for the main &lt;div&gt;. Since the main rests inside the wrap the padding height is already part of the 100%. Thus the footer rests at the bottom of the page.</p>
+			<p>The conditional statement is neccessary to allow IE8 to expand beyond the 100% height should the content be longer. The other hack is for browsers that dont understand min-height, in particular Opera. It uses a 100% height float to resize pages properly when adjusting the viewport (browser window) size. The -32767px margin is Opera's limit.</p>
+			<h2>No Need for Clearfix Hack!</h2>
+			<p>Many CSS designers will be familiar with the <em>Clearfix Hack</em>. It solved a lot of problems with floating elements. A previous version of this Sticky Footer solution used it. Instead, a more modern and easier to code solution is the overflow statement. We apply it to the main &lt;div&gt; to help get the footer to stick in Chrome. It also solves issues that come up when using a 2-column layout where you float your content to one side and your sidebar to the other. The floating content elements inside the main &lt;div&gt; can cause the footer to become un-stuck in some browsers.</p>
+
+			<h2>Known Issues</h2>
+			<h3>Heights and Margins</h3>
+			<p>Using top and bottom margins inside some elements may push your footer down by that margin height, perhaps in a header or the wrap or main &lt;div&gt's themselves. Instead use padding to create spacing inside the element. You'll notice this is happening if your page has little content so that the footer should be on the bottom but you see that your window scroll bar on the side indicates that it is sitting a bit below the window bottom. Go find the offending top or bottom margin and switch it to padding.</p>
+			<p>Be carefull with declaring padding on the main &lt;div&gt; in another part of your style sheet. If you were to add something like this; padding:0 10px 0 10px; you would end up overwriting the important bottom padding that is supposed to be the same as your footer height. This would cause your footer to start overlaping your content on your longer pages (in Google Chrome).</p>
+			<p>Watch out if you are using a border on your footer. If you add a 1px border to a 200px high footer, then you need to use 201px as your negative margin in in #footer and 201px as your padding bottom in #main to compensate for that extra 1pixel.</p>
+			<h3>Font Sizes</h3>
+			<p>When setting font sizes in your style sheet, if you use relative sizing be aware that some viewers may have their monitor settings create bigger font sizes. In some elements, like in the footer itself, it could break the height settings and create a gap below the footer if there is not enough room left for the text to expand lower. So try using absolute sizing by using px instead of pt or em. Or simply leave plenty of room for text in your footer to expand.</p>
+			<h3>.NET Platforms</h3>
+			<p>When coding sites for ASP.net where each page is inside a &lt;form&gt; tag, be sure to add the form tag to the height:100% statement, else it will break the sticky footer. Like this;</p>
+<pre>
+html, body, form, #wrap {height: 100%;}
+</pre>
+			<h2>Some sample sites using the sticky footer code</h2>
+			<p>Obviously this very site you are on is using the code, but here is a few others out in the wild. This <a href="http://www.birchhilllandscape.com">West Hartford, CT landscaper</a> uses it. You'll notice the home page uses an extra feature bar between the header and content area. Adding extras like that is no problem as long as they reside within the wrap &lt;div&gt;. My own <a href="http://www.geolocalseo.com/">local SEO service</a> website does the same thing, as does this <a href="http://www.farzamlaw.com">personal injury attorney in Los Angeles</a>.</p>
+			<p>Sidebars on those pages are a little long so for most part the sticky footer code may be redundant, but the odd page may make use of it. It's now a standard practice when I build sites now, if they need it or not.</p>
+
+		</div>
+		<div id="sidebar">
+			<ul>
+				<li><a href="http://www.cssstickyfooter.com/style.css" rel="nofollow">View the Sticky Footer CSS</a></li>
+				<li><a href="http://www.cssstickyfooter.com/html-code.html">View the Sticky Footer HTML</a></li>
+				<li><a href="http://www.cssstickyfooter.com/using-sticky-footer-code.html">How to Use the Sticky Footer Code</a></li>
+			</ul>
+			<h2>Works in These Browsers</h2>
+			<img src="http://www.cssstickyfooter.com/images/firefox.gif" alt="FireFox" title="FireFox" />
+			<img src="http://www.cssstickyfooter.com/images/google-chrome.gif" alt="Google Chrome" title="Google Chrome" />
+			<img src="http://www.cssstickyfooter.com/images/internet-explorer.gif" alt="Internet Explorer 6, 7 and 8"  title="Internet Exploder 6, 7 and 8" />
+			<img src="http://www.cssstickyfooter.com/images/safari.gif" alt="Mac Safari"  title="Safari for Mac users" />
+			<img src="http://www.cssstickyfooter.com/images/opera.gif" alt="Opera"  title="Opera" />
+			<img src="http://www.cssstickyfooter.com/images/konqueror.gif" alt="Konqueror"  title="Konqueror" />
+			<p><a href="browser-list.html">View the full list here</a></p>
+			<h2>Like this Sticky Footer Solution?</h2>
+			<p><strong>Send us a little donation</strong></p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="4FPJ5SJ4GCKHC">
+<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+			<p>Or link to it, blog about it, tweet it, etc... so that others may be able to find it easily.</p>
+			<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.cssstickyfooter.com" data-text="CSS Sticky Footer Solution - No duct tape required" data-count="horizontal" data-via="axemedia">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+			<h2>Have Comments About this Solution?</h2>
+			<p>Discuss it on this <a href="http://stever.ca/web-design/css-sticky-footer/">blog post here</a>.</p>
+			<h2>Translations Needed</h2>
+			<p>Translate these pages and we'll credit you with links, <a href="translate.html">click here</a>.</p>
+			<br />
+		</div>
+	</div>
+</div>
+<div id="footer">
+	<div id="foot">
+		<div id="left">
+			<p><a href="http://www.cssstickyfooter.com">css sticky footer</a></p>
+			<p>duct tape for illustrative purposes only. it still sticks without it.</p>
+		</div>
+		<div id="right">
+			<p class="axe">web design by <a href="http://www.axemedia.com" title="Local Internet 
+			Marketing"><img src="http://www.cssstickyfooter.com/images/axemedia.gif" alt="Axemedia - Local Internet Marketing" /></a></p>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3010497-12");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>
