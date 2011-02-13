@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/colorbox.css" />
+<link rel="icon" href="/images/favicon.ico" type="image/gif"/> 
+
+<title>Roach Map - Where are the roaches in NYC? - The Great Urban Hack</title>
+<meta name="description" content="A map of New York City cockroach reports in restaurants recorded by the Health Department." />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://use.typekit.com/vbg6ymp.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+<script type="text/javascript" src="/jquery/jquery.colorbox-min.js"></script>
+<script>
+		$(document).ready(function(){
+			$(".image").colorbox();
+		});
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19554555-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+<body>
+<div id="container">
+<h1>The New York City Roach Map</h1>
+<a class='image' href="/images/roachmap.png"><img src="/images/roachmap.png" class="map" alt="Where are the roaches? November 2010 map"></a><p>Cockroaches are gross. They spread germs. They defecate on our silverware. They live in our kitchens, our bathrooms. They thrive on our garbage, our leftover food.  And in a city of 8 million, they can be anywhere. But where are they exactly?</p>
+
+<p>Right now there's no up-to-date way to track roach infestations. But restaurant inspectors are on the look out for the 6-legged bugs all the time. This map shows where city health inspectors are reporting roach sightings on any given week.</p>
+
+<p>Check back each week to find out the neighborhood with the highest number of roach infestations.</p>
+
+		<div class="share">
+		<p><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Froachmap.com&amp;layout=button_count&amp;show_faces=true&amp;width=100&amp;action=recommend&amp;font=lucida+grande&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>
+		</p>
+		</div>
+		
+<p>Sign up below to be emailed a monthly snapshot of where the roaches are.</p>
+<form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=roachmap/XgDN', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p><input type="text" style="width:145px" name="email" class="email"/><input type="hidden" value="roachmap/XgDN" name="uri"/><input type="hidden" name="loc" value="en_US"/><input type="submit" value="Subscribe" class="button" /></p></form>
+<div class="clear"></div>
+<table><tr><th>Rank</th><th>ZIP code</th><th>Inspections</th><th>Roach-incidents</th><th>Expected roach rate</th></tr>
+<!--#include virtual="roachincidence.incl"-->
+</table>
+<p><img src="/images/german-cockroach.png"><a href="about.html">Learn more</a> about who's behind the Roach Map and how it was made.</p>
+<div class="clear"></div>
+<div id="footer">
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0; padding-right:10px; float:left;" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a><p><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type"><a xmlns:cc="http://creativecommons.org/ns#" href="http://roachmap.com" property="cc:attributionName" rel="cc:attributionURL">Roach Map</a></span> by Niles Brooks, Jim Colgan, Max Shron, John Myles White and Chrys Wu is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a> | <a href="about.html"><b>About</b></a><br/>
+German cockroach image by <a href="http://www.flickr.com/photos/sarahcamp/316795575/">Sarah Camp/Flickr</a> is licensed under a Creative Commons Attribution-NoDerivs 2.0 Generic License</p>
+</div>
+
+</div>
+<div class="clear"></div>
+
+<div id="archives">Archives:
+
+<ul>
+  <li><a href="/">Nov. 5, 2010 map</a></li>
+</ul>
+
+</div>
+
+
+
+</body>
+</html>

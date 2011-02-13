@@ -1,6 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
 <link rel="stylesheet" type="text/css" href="/css/reset.css" />
 <link rel="stylesheet" type="text/css" href="/css/style.css" />
 <link rel="stylesheet" type="text/css" href="/css/colorbox.css" />
@@ -35,7 +36,15 @@
 <body>
 <div id="container">
 <h1>About the New York City Roach Map</h1>
-<a href="http://www.flickr.com/photos/k790i/3639234792/"><img src="/images/roach.png" class="right" padding-top="55px" padding-left="5px"></a><p padding="40px">On Nov. 6 and 7, 2010, a group of journalists, data scientists and developers got together for <a href="http://meetupnyc.hackshackers.com/calendar/14969218/">The Great Urban Hack NYC</a>, a two-day, overnight, city-oriented hackathon hosted by <a href="http://meetupnyc.hackshackers.com/">Hacks/Hackers NYC</a> and <a href="http://eyebeam.org">Eyebeam Art + Technology Center</a>.</p>
+<a href="http://www.flickr.com/photos/k790i/3639234792/"><img src="/images/roach.png" class="right" padding-top="55px" padding-left="5px"></a><p padding="40px">They may not disrupt your life as much as bedbugs, but nobody wants to live in a place where cockroaches roam free. They can cause the spread of asthma, they can spread dangerous germs and they're just plain ugly.</p>
+
+<p>Each week, New York City restaurant inspectors visit hundreds of restaurants and one of their jobs is to document sightings of live cockroaches. The inspectors add their findings to the publicly available restaurant reports, creating the only official database of roach sightings.</p>
+
+<p>This website shows the zip codes around the city that had the highest number of roach sightings in the past week based on this data. We update the map every Monday, and every month, we send out an email with the ZIP codes and neighborhoods that had the most roach sightings in the most recent four-week period.</p>
+
+<p>We came up with this idea at <a href="http://hackshackers.com/2010/11/08/open-all-night-the-great-urban-hack-nyc/">The Great Urban Hack NYC</a>, a two-day, overnight hackathon that brought together journalists, data scientists and developers on Nov. 6 and 7, 2010.</p>
+
+<p>Read on for the technical details of how this works &#8230;</p>
 
 <p>After brainstorming and chucking several ideas, five of us settled on creating a map of roach reports culled from city restaurant health inspection data. Since this site and the map were produced during a hackathon, think of it as a work in progress, one that's <a href="https://github.com/macdiva/RoachMap">free to fork</a>.</p>
 
@@ -48,7 +57,7 @@
 <p>This count data tells us what percentage of inspections resulted in a violation for roaches. For that reason, we chose to analyze the data as draws from a binomial model. To estimate the parameters of this model, we used a hierarchical Bayesian model implemented both as an empirical Bayes approach in NumPy (<a href="https://github.com/macdiva/RoachMap/blob/master/draw_map.py">draw_map.py</a>) and using Gibbs sampling (<a href="https://github.com/macdiva/RoachMap/blob/master/jags_analysis.R">jags_analysis.R</a>) to correct for the large discrepancies in inspections across ZIP codes. Some ZIP codes only have a few inspections, while other ZIP codes have a very large number of inspections: the Bayesian approach allows us to pool information across all ZIP codes to make up for this discrepancy.</p>
 
 <p>With that information, we plot the data on a map using a NYC shapefile using Matplotlib. This is done in draw_map.py.</br>
-<div class="byline">&mdash; John Myles White and Chrys Wu, on behalf of the Roach Map team, a.k.a. "Drawing Conclusions"</div></p>
+<div class="byline">&mdash; The Roach Map team, a.k.a. "Drawing Conclusions"</div></p>
 <div class="clear"></div>
 <p><b>Drawing Conclusions</b> is...<br/>
 <ul>
@@ -75,7 +84,6 @@ Photo by <a href="http://www.flickr.com/photos/k790i/3639234792/">Anil Jedhav/Fl
 <div id="archives">Archives:
 
 <ul>
-  <li><a href="/">Week of Oct. 31, 2010</a></li>
   <li><a href="/">Week of Nov. 7, 2010</a></li>
 </ul>
 
