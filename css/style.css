@@ -9,29 +9,25 @@ body {
 }
 
 #container {
-    width: 960px;
+    width: 800px;
     margin: 0 auto;
     font-family: "adelle-1","adelle-2",serif;
     text-align: left;
     background-color: #fff;
-        -moz-border-radius: 15px;
-    border-radius: 15px;
-    padding: 40px 40px 20px 40px;
-
 }
     
 h1 {
 	font-family: "jesaya-1","jesaya-2",sans-serif;
 	font-size: 36px;
-	padding: 0 0 15px 60px;
+	padding: 0 0 18px 0;
     text-shadow: 2px 2px 1px #ccc, 2px 2px 1px #fff;
 }
 
 .map {
     float:left;
-    width: 650px;
-    height: 488px;
-    padding-bottom:0px;
+    width: 	500px;
+    height: 375px;
+    padding: 0 20px 20px 0;
 }
 
 p {
@@ -39,12 +35,21 @@ p {
     font-size: 0.85em;
     font-weight: 400;
     line-height: 1.25;
-    padding: 0 60px;
 }
 
 img.right {
     float: right;
     padding: 5px;
+}
+
+table {
+	margin-bottom: 15px;
+	border: 1px solid gray;
+}
+
+th, td {
+	border: 1px solid gray;
+	padding:5px;
 }
 
 ul {
@@ -70,15 +75,16 @@ ul li {
     background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#EEE));
     background:-moz-linear-gradient(0% 90% 90deg, #EEE, #FFF);
         -moz-border-radius: 15px;
-    border-radius: 15px;
-    padding: 10px 50px;
-    font-size: 1.15em;
+    border-radius: 10px;
+    margin-left: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
 }
 
 .email {
     padding: 5px 2px 5px 35px;
     margin-bottom:5px;
-    background: url(email-icon.png) 10px center    no-repeat;
+    background: url('/images/email-icon.png') 10px center no-repeat;
 }
 
 .clear {
@@ -88,6 +94,7 @@ ul li {
 #footer {
     font-size: 11px;
     color: #777;
+    padding-top: 20px;
 }
 
 #footer a {
